@@ -80,9 +80,7 @@ public class APIFbLogin extends APIResource {
             }
 
             APIResponse<UToken> result = new APIResponse<>(APIStatus.OK, "Đăng nhập thành công");
-
             User user = apiResult.getFirst();
-            user.forPublic();
             UToken userResp = user.parse();
             sessionReq.user_id = userResp.id;
             sessionReq.partner_code = SConfig.getString("setting.code");

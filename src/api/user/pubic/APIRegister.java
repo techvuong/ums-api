@@ -134,8 +134,6 @@ public class APIRegister extends APIResource {
             UserRabbitMQ.getInstance().sendMessageToQueue("NEW", user, sessionReq, stoken);
 
             APIResponse<UToken> result = new APIResponse<>(APIStatus.OK, "Register successful");
-
-            user.forPublic();
             UToken userResp = user.parse();
             sessionReq.user_id = userResp.id;
             sessionReq.partner_code = SConfig.getString("setting.code");

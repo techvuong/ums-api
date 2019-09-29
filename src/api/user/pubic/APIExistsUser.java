@@ -40,13 +40,6 @@ public class APIExistsUser extends APIResource {
             }
 
             APIResponse<User> result = UserDB.getInstance().queryOne(userQuery);
-            if (result == null || result.status != APIStatus.OK) {
-                LOGGER.error("ERROR " + GSON.toJson(result));
-                resp.respond(result);
-                return;
-            }
-            
-            result.getFirst().forPublic();
             resp.respond(result);
 
         } catch (Exception ex) {

@@ -38,15 +38,6 @@ public class APIUsername extends APIResource {
             }
 
             APIResponse<User> result = HzUser.getInstance().getByUsername(username);
-            if (result == null || result.status != APIStatus.OK) {
-                resp.respond(result);
-                return;
-            }
-
-            if(result.status == APIStatus.OK){
-                result.getFirst().forPublic();
-            }
-            
             resp.respond(result);
 
         } catch (Exception ex) {

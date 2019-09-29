@@ -40,12 +40,6 @@ public class APIBank extends APIResource {
             }
 
             APIResponse<User> result = HzUser.getInstance().getByBankAccountNo(bankAccountNo);
-            if (result == null || result.status != APIStatus.OK) {
-                resp.respond(result);
-                return;
-            }
-
-            result.getFirst().forPublic();
             resp.respond(result);
 
         } catch (Exception ex) {

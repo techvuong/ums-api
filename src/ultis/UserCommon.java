@@ -251,6 +251,10 @@ public class UserCommon {
             if (userReq.status != null && userReq.status.isEmpty()) {
                 userReq.status = null;
             }
+            
+            if(userReq.phone != null){
+                userReq.is_phone_active = true;
+            }
 
             APIResponse<User> apiResult = UserService.update(_id, userReq);
             if (apiResult != null && apiResult.status == APIStatus.OK) {

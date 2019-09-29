@@ -43,12 +43,6 @@ public class APIOneUser extends APIResource {
 
             if ("boping".equals(type)) {
                 APIResponse<User> apiResult = HZ_USER.getByBopingId(ids);
-                if (apiResult != null && apiResult.status == APIStatus.OK) {
-                    User user = apiResult.getFirst();
-                    if (!AuthCommon.isSupport(uToken)) {
-                        user.forPublic();
-                    }
-                }
                 resp.respond(apiResult);
                 return;
             }
@@ -70,9 +64,6 @@ public class APIOneUser extends APIResource {
 
                 if (result != null && result.status == APIStatus.OK) {
                     User user = result.getFirst();
-                    if (!AuthCommon.isSupport(uToken)) {
-                        user.forPublic();
-                    }
                     users.add(user);
                 }
             }
